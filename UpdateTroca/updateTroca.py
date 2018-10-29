@@ -11,6 +11,8 @@ def writeOutFile(customer, hostname, username, password, IP, OS):
 
 f = open("out.txt", "w")
 f.close()
+t = open("temp.txt", "w")
+t.close()
 
 with open('temp.txt', 'r') as temp:
     for line in temp:
