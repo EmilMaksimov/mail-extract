@@ -6,14 +6,14 @@ def findWholeWord(w):
 
 
 def writeOutFile(customer, i, username, password, IP, OS):
-    with open("out.txt", "a") as o:
+    with open("/tmp/temp.txt", "a") as o:
         o.write("\"" + customer + "\"" + "," + "\"" + i.upper() + "\"" + "," + "\"" + username + "\"" + "," + "\"" + password + "\"" + "," + "\"" + IP + "\"" + "," + "\"" + OS + "\"""\n")
 
 
 mail_extract = input('Enter your mail extract file path: ')
 hostname = None
 unique_hostnames = []
-f = open("out.txt", "w")
+f = open("/tmp/temp.txt", "w")
 f.close()
 
 with open(mail_extract) as m:
@@ -24,7 +24,7 @@ with open(mail_extract) as m:
             unique_hostnames.append(hostname)
 for i in unique_hostnames:
     with open(mail_extract) as u:
-        for u_line in u:key
+        for u_line in u:
             if i in u_line and "Password:" in u_line and "Abstract" not in u_line:
                 password = u_line.strip().split(':')[2]
     with open(mail_extract) as uu:
@@ -32,7 +32,7 @@ for i in unique_hostnames:
             if i in uu_line and "User" in uu_line and "Abstract" not in uu_line:
                 username = uu_line.strip().split(':')[2]
     flag = False
-    with open('/home/emil/Downloads/query_sys0.csv') as cmdb:
+    with open('../query_sys0.csv') as cmdb:
         for cmdb_line in cmdb:
             if "." not in i:
                 if findWholeWord(i)(cmdb_line.upper().split(',')[2]) != None:
@@ -47,10 +47,9 @@ for i in unique_hostnames:
                     IP = cmdb_line.split(',')[3]
                     customer = cmdb_line.split(',')[7]
                     OS = cmdb_line.split(',')[9]
-                    writeOutFile(customer, i, username, password, IP, OS)
+                    writeOutFile(customer, i.split('.')[0], username, password, IP, OS)
                     flag = True
                     break
     if flag == False:
         customer, IP, OS = ['No-cmdb'] * 3
         writeOutFile(customer, i, username, password, IP, OS)
-import cryptGPG
