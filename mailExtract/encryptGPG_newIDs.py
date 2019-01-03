@@ -20,7 +20,7 @@ gpg = gnupg.GPG(gnupghome='/Users/emaksimov/.gnupg/')
 '''READ generated file and append to unencrypted file'''
 with open('/tmp/temp.txt', 'r') as out:
     for line in out:
-        with open('/tmp/pwd.txt','a') as infile:
+        with open('pwd.txt','a') as infile:
             infile.write(line)
 
 with open('/tmp/temp.txt','rb') as f:

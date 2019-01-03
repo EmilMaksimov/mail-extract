@@ -14,9 +14,7 @@
 import gnupg
 import getpass
 
-passphrase = getpass.getpass(
-
-)
+passphrase = getpass.getpass()
 
 gpg = gnupg.GPG(gnupghome='/Users/emaksimov/.gnupg/')
 
