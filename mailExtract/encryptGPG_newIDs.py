@@ -20,14 +20,14 @@ gpg = gnupg.GPG(gnupghome='/Users/emaksimov/.gnupg/')
 '''READ generated file and append to unencrypted file'''
 with open('/tmp/temp.txt', 'r') as out:
     for line in out:
-        with open('pwd.txt','a') as infile:
+        with open('/tmp/pwd.txt','a') as infile:
             infile.write(line)
 
-with open('/tmp/temp.txt','rb') as f:
+with open('/tmp/pwd.txt','rb') as f:
     status = gpg.encrypt_file(f, recipients=['emil.maksimov@cz.ibm.com'], output='/Users/emaksimov/Documents/conecta-config/pwd.gpg')
 
-os.system('rm -f /tmp/temp.txt')
-os.system('rm -f /tmp/pwd.txt')
+#os.system('rm -f /tmp/temp.txt')
+#os.system('rm -f /tmp/pwd.txt')
 
 print('ok: ', status.ok)
 print('Status: ', status.status)
